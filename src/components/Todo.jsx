@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TodosContext } from "./Todos";
 
 const Todo = (props) => {
    const { todo } = props;
+   const { dispatch } = useContext(TodosContext);
    const taskDone = `line-through text-gray-400`;
+
+   const handelChangeStatus = (todo) => {
+      dispatch({
+         type: "done",
+         payload: {
+            id: todo.id,
+         },
+      });
+   };
+
    return (
       <li className="flex items-center justify-center gap-4 text-[18px]">
          <span className={`${todo.progress ? "" : taskDone}`}>
@@ -14,7 +26,7 @@ const Todo = (props) => {
             className="border border-indigo-600 outline-none"
             type="checkbox"
             checked={todo.progress}
-            onChange={() => (props.onChange ? props.onChange(todo) : null)}
+            onChange={() => handelChangeStatus(todo)}
          />
       </li>
    );
