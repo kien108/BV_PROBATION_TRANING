@@ -28,7 +28,7 @@ const MemorizeExample = () => {
       <div>
          <h1>{randomNumber}</h1>
 
-         <div className="">{listDatas}</div>
+         <div className="text-xl text-red-500">{listDatas}</div>
          <div className="">
             <button onClick={() => getRandomNumber()}>Random Number</button>
             <button onClick={() => addElementToArray()}>Add Element</button>
