@@ -2,10 +2,10 @@ import React from "react";
 
 const Todo = (props) => {
    const { todo } = props;
-
+   const taskDone = `line-through text-gray-400`;
    return (
-      <li className="flex items-center justify-center gap-4">
-         <span className={`${todo.progress ? "line-through" : ""}`}>
+      <li className="flex items-center justify-center gap-4 text-[18px]">
+         <span className={`${todo.progress ? "" : taskDone}`}>
             {todo.id} : {todo.title}
          </span>
 
