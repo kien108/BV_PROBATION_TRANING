@@ -1,0 +1,31 @@
+------------ TOPIC 1: REACT BASIC
+I. New words
+1. blueprint: bản thiết kế
+2. instance: giống như khai báo bằng từ khóa new trong class (ex: dog = new Animal())
+3. declare: khai báo
+4. utilities: tiện ích
+
+
+1. useState (quản lý state)
+- Tạo nên 1 state và state này chỉ có thể thay đổi được bằng setState
+- Nếu như giá trị initState phức tạp: useState(() => return abc)
+- Nếu như giá trị state phụ thuộc vào prevState: setState(prev => prev + 1)
+- Khi 1 state truyền đi giữa nhiều component, ta sử dụng context or lifting state up
+* Lifting state up: nâng trạng thái lên. Đây chỉ 1 component con di chuyển state cục bộ lên cho cha gần nhất và nhận các props thay thế.
+ex: <Input value={value} onChange={handelChange}/>
+
+2. useRef (lưu trữ mutation state: state đột biến)
+- Khi ref thay đổi component k re-render
+- giá trị ref k đổi sau mỗi lần render
+- Ta dùng ref hướng tới DOM(trigger style like toggle modal) or setTimeout
+
+3. useReducer
+- Được xem như là 1 redux thu nhỏ giúp sử dụng global state.
+- Giúp tách biệt business logic ra khỏi component
+- Khai báo: const [state: user, dispatch] = useReducer(reducer, initState)
+
+4. useEffect (quản lý lifecycle - quản lý sự thay đổi state)
+- Nhận vào 2 params: callback function và list dependencies.
+- callback return là cleanup: Dùng để clear eventlistener or reset data cho redux.
+
+5.
