@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Modal, { ModalContent } from "./Modal";
 import Todo from "./Todo";
 
@@ -74,11 +74,17 @@ const Todos = () => {
 
 const TodoModal = (props) => {
    const [todo, setTodo] = useState("");
+   const inputRef = useRef(null);
 
    const btnStyle =
       "rounded-md bg-indigo-800 px-4 py-[6px] font-semibold min-w-[80px]";
 
    const handelAddTodo = (todo) => {
+      if (!todo.trim()) {
+         setTodo("");
+         inputRef.current.style.border = "1px solid red";
+         return;
+      }
       props.addTodo({
          id: props.id + 1,
          title: todo,
@@ -102,6 +108,7 @@ const TodoModal = (props) => {
             Todo content
          </label>
          <input
+            ref={inputRef}
             value={todo}
             onChange={(e) => setTodo(e.target.value)}
             type="text"
