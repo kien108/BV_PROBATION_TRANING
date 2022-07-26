@@ -10,7 +10,8 @@ const TodoModal = (props) => {
       "rounded-md bg-indigo-800 px-4 py-[6px] font-semibold min-w-[80px]";
 
    const handelAddTodo = (todo) => {
-      if (!todo) {
+      if (!todo.trim()) {
+         setTodo("");
          inputRef.current.style.border = "1px solid red";
          return;
       }
