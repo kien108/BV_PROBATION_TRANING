@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { TodosContext } from "./Todos";
+import { TodosContext } from "../pages/Todos";
 
 const Todo = (props) => {
    const { todo } = props;

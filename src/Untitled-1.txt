@@ -1,9 +1,11 @@
------------- TOPIC 1: REACT BASIC
+------------ TOPIC 1: REACT BASIC -----------------
 I. New words
 1. blueprint: bản thiết kế
 2. instance: giống như khai báo bằng từ khóa new trong class (ex: dog = new Animal())
 3. declare: khai báo
 4. utilities: tiện ích
+5. principle: nguyên tắc
+6. substitution: thay thế
 
 
 1. useState (quản lý state)
@@ -28,4 +30,25 @@ ex: <Input value={value} onChange={handelChange}/>
 - Nhận vào 2 params: callback function và list dependencies.
 - callback return là cleanup: Dùng để clear eventlistener or reset data cho redux.
 
-5.
+------------ TOPIC 2: DESIGN COMPONENTS -----------------
+1. Thiết kế theo nguyên tắc SOLID
+- S: Mỗi một component chỉ nên thực hiện 1 vai trò/ chức năng cụ thể mà thôi.
+- O: Các component chỉ nên kế thừa và mở rộng chứ không nên sửa đổi component cũ.
+- L: Nếu extend một component từ component khác thì các chức năng vẫn phải thực hiện như cũ (ví dụ ta custom lại Input từ third-party thì cách sử dụng phải như cũ)
+- I: Nên tách các component ra để thực hiện những vai trò cụ thể
+- D: Các component phụ thuộc vào lớp trừu tượng (React.component)
+
+2. Các loại component
+- Layout component: Là thành phần chung của app, không mang chức năng cụ thể và dùng để render ra UI
+- Feature component: Được cấu thành từ các layout component, mang chức năng cụ thể giải quyết một module. (Business logic)
+
+3. Layout component (Button, Dropdown, modal, Calendar,...)
+- Được sử dụng trong nhiều module mang lại tính thống nhất
+- Phải thiết kế đơn giản để có thể reuse và mang tính chất abstract để có thể thử dụng nhiều vị trí.
+
+4. Feature Components
+- Thiết kế theo quy tắc (Ví dụ module login)
++ LoginPage: component được redirect từ routes (ở đây ta lấy các params và truyền vào con dưới dạng props)
++ LoginContainer: Sử dụng bên trong LoginPage dùng làm wrapper
++ LoginComponent: Các thành phần nhỏ nhất, cấu thành nên LoginPage. Các component này có thể được reuse ở các feature khác.
+
